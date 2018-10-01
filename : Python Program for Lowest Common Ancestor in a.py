@@ -73,6 +73,5 @@ print "LCA(4, 5) = %d" %(findLCA(root, 4, 5,))
 print "LCA(4, 6) = %d" %(findLCA(root, 4, 6)) 
 print "LCA(3, 4) = %d" %(findLCA(root,3,4)) 
 print "LCA(2, 4) = %d" %(findLCA(root,2, 4)) 
-print "LCA(1, 2) = %d" %(findLCA(root,1, 2)) 
 
 # This code is contributed by Nikhil Kumar Singh(nickzuck_007) 
