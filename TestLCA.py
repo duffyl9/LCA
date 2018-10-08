@@ -42,6 +42,40 @@ class TestLCA(unittest.TestCase):
 		self.assertEqual(findLCA(root, 2, 5), 2)
 		self.assertEqual(findLCA(root, 3, 4), 1)
 
+	def testFindPath(self):
+
+		root = Node(1)
+		root.left = Node(2)
+		root.right = Node(3)
+		root.left.left = Node(4)
+		root.left.right = Node(5)
+		root.right.left = Node(6)
+		root.right.right = Node(7)
+
+		path = []
+		k = 1
+
+		#Test for if k == root's key
+		path = []
+		k = 1
+		self.assertTrue(findPath(root, path, k))
+
+		#Test for if k is present in left or right sub-tree
+		k = 4
+		self.assertTrue(findPath(root, path, k))
+
+		#Test for if k is not present in subtree rooted with root
+		k = 8
+		self.assertFalse(findPath(root, path, k))
+
+		#Test for when root is None
+		root = None
+		k = 3
+		self.assertFalse(findPath(root, path, k))
+
+
+
+
 
 
 

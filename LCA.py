@@ -21,7 +21,6 @@ def findLCA(root, n1, n2):
 	# If either n1 or n2 is not present , return -1 
 	if (not findPath(root, path1, n1) or not findPath(root, path2, n2)):
 		return -1
-  		import pdb; pdb.set_trace()  # breakpoint fbd19797 //
 
 
 
@@ -47,6 +46,7 @@ def findPath( root, path, k):
 	# Store this node is path vector. The node will be 
 	# removed if not in path from root to k 
 	path.append(root.key)
+
 
 	# See if the k is same as root's key 
 	if root.key == k : 
@@ -79,6 +79,6 @@ print "LCA(4, 5) = %d" %(findLCA(root, 4, 5,))
 print "LCA(4, 6) = %d" %(findLCA(root, 4, 6)) 
 print "LCA(3, 4) = %d" %(findLCA(root,3,4)) 
 print "LCA(2, 4) = %d" %(findLCA(root,2, 4)) 
-print "LCA(3, 7) = %d" %(findLCA(root,3, 7)) 
+print "LCA(3, 7) = %d" %(findLCA(root,3, 7))
 
 # This code is contributed by Nikhil Kumar Singh(nickzuck_007) 
