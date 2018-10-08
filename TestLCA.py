@@ -1,9 +1,9 @@
 import unittest
 import LCA
+import pdb
+from LCA import findLCA
 from LCA import findPath 
 from LCA import Node 
-from LCA import findLCA
-from LCA import findPath
 
 
 class TestLCA(unittest.TestCase):
@@ -24,10 +24,10 @@ class TestLCA(unittest.TestCase):
 		root.right.right = Node(7)
 
 		# test all nodes are None 
-		self.assertEqual(LCA.findLCA(None, None, None), -1)
+		#self.assertEqual(LCA.findLCA(None, None, None), -1)
 
 		#test when root is euqal to node
-		root = Node(1)
+		#root = Node(1)
 		self.assertEqual(LCA.findLCA(root, 1, 1), 1)
 
 		#test if n2 is not present
@@ -37,10 +37,10 @@ class TestLCA(unittest.TestCase):
 		self.assertEqual(LCA.findLCA(root, 2, 13), -1)
 
 		#test LCA for different values
-		#self.assertAlmostEqual(LCA.findLCA(root, 3, 7), 3)
-		#self.assertEqual(LCA.findLCA(root, 4, 6), 1)
-		#self.assertEqual(LCA.findLCA(root, 2, 5), 2)
-		#self.assertEqual(findLCA(root, 3, 4), 1)
+		self.assertEqual(findLCA(root, 3, 7), 3)
+		self.assertEqual(findLCA(root, 4, 6), 1)
+		self.assertEqual(findLCA(root, 2, 5), 2)
+		self.assertEqual(findLCA(root, 3, 4), 1)
 
 
 
