@@ -12,7 +12,7 @@ class test_dag(unittest.TestCase):
         root = Node(1)
         self.assertEqual(1, root.key)
 
-    def testFindLCA(self):
+    def testfindLCA(self):
 
         root = Node(1)
         root.children.append(dag.Node(2)) 
@@ -37,7 +37,7 @@ class test_dag(unittest.TestCase):
         #test when node is value is not in tree
         self.assertEqual(dag.findLCA(root, 2, 13), None)
 
-        #test LCA for different values
+        #test dag for different values
         self.assertEqual(dag.findLCA(root, 3, 7), 3)
         self.assertEqual(dag.findLCA(root, 4, 6), 1)
         self.assertEqual(dag.findLCA(root, 2, 5), 2) 
@@ -80,6 +80,50 @@ class test_dag(unittest.TestCase):
 
         #self.assertAlmostEqual(dag.findLCA(root, 6, 8), 3)
         self.assertEqual(dag.findLCA(root, 6, 7), 6)
+
+
+    def test_pathTo(self):
+
+        #Graph with 7 nodes
+        root = dag.Node(1)
+        root.children.append(dag.Node(2)) 
+        root.children.append(dag.Node(3))
+        root.children[0].children.append(dag.Node(4))
+        root.children[0].children.append(dag.Node(5))
+        root.children[1].children.append(dag.Node(6))
+        root.children[1].children[0].children.append(dag.Node(5))
+        root.children[1].children[0].children.append(dag.Node(7))
+
+        #Test 1: Test when root is None
+        self.assertEqual(dag.pathTo(None, 2, 3), False)
+
+        #Test 2: Test all values are None
+        self.assertEqual(dag.pathTo(None, None, None), False)
+
+        #Test 3: test path to root
+        self.assertEqual(dag.pathTo(root, [], 1), True)
+
+        #Test 4: test for key not in tree
+        self.assertEqual(dag.pathTo(root, [], 25), False)
+
+        #Test 4: path to 7
+        self.assertEqual(dag.pathTo(root, [], 7), True)
+
+        #Test 6: path to 6
+        self.assertEqual(dag.pathTo(root, [], 6), True)
+        
+        #Test 7: path to 5
+        self.assertEqual(dag.pathTo(root, [], 5), True)
+
+        #Test 8: path to 4
+        self.assertEqual(dag.pathTo(root, [], 4), True)
+
+        #Test 9: path to 3
+        self.assertEqual(dag.pathTo(root, [], 3), True)
+
+        #Test 10: path to 2
+        self.assertEqual(dag.pathTo(root, [], 2), True)
+
 
         
 
