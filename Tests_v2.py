@@ -125,6 +125,47 @@ class test_dag(unittest.TestCase):
         self.assertEqual(dag.pathTo(root, [], 2), True)
 
 
+    def test_findPathsTo(self):
+
+        #new Graph
+        root = dag.Node(1)
+        root.children.append(dag.Node(2)) 
+        root.children.append(dag.Node(3))
+        root.children[0].children.append(dag.Node(4))
+        root.children[1].children.append(dag.Node(6))
+        root.children[1].children[0].children.append(dag.Node(5))
+        root.children[1].children[0].children.append(dag.Node(7))
+
+        #Test 1: test when root is equal None
+        self.assertEqual(dag.findPathsTo(None, 2), [])
+
+        #Test 2: test when key is None
+        self.assertEqual(dag.findPathsTo(root, None), [])
+
+        #Test 3: test when all keys are None
+        self.assertEqual(dag.findPathsTo(None, None), [])
+
+        #Test 4: test path to root
+        self.assertEqual(dag.findPathsTo(root, 1), [[1]])
+
+        #Test 5: test for key not in tree
+        self.assertEqual(dag.findPathsTo(root, 25), [])
+
+        #Test 6: paths to 7
+        self.assertEqual(dag.findPathsTo(root, 7), [[1,3,6,7]])
+
+        #Test 7: path to 5
+        self.assertEqual(dag.findPathsTo(root, 5), [[1,3,6,5]])
+        
+        #Test 8: path to 4
+        self.assertEqual(dag.findPathsTo(root, 4), [[1,2,4]])
+
+        #Test 9: test for more than one path
+        root.children[0].children[0].children.append(dag.Node(5))
+        self.assertEqual(dag.findPathsTo(root, 5), [[1,2,4,5],[1,3,6,5]])
+
+
+
         
 
 if(__name__ == '__main__'):
